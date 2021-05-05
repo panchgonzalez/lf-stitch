@@ -24,7 +24,7 @@ class Stitcher:
         good_points = []
         good_matches = []
         for m1, m2 in raw_matches:
-            if m1.distance < self.ratio * m2.distance:
+            if m1.distance < self.lowes_ratio * m2.distance:
                 good_points.append((m1.trainIdx, m1.queryIdx))
                 good_matches.append([m1])
         img3 = cv2.drawMatchesKnn(img1, kp1, img2, kp2, good_matches, None, flags=2)
@@ -62,7 +62,7 @@ class Stitcher:
         return cv2.merge([mask, mask, mask])
 
     def blend(self, img1: np.ndarray, img2: np.ndarray):
-        H = self.registration(img1, img2)
+        H = self.register(img1, img2)
         height_img1 = img1.shape[0]
         width_img1 = img1.shape[1]
         width_img2 = img2.shape[1]
