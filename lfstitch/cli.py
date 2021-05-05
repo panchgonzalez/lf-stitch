@@ -10,8 +10,8 @@ from .utils import load_image
 
 def _parse():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dir", type=str, default="images")
-    parser.add_argument("--output", type=str, default="stitched.jpg")
+    parser.add_argument("--dir", type=str, default="scans")
+    parser.add_argument("--output", type=str, default="final.jpg")
     args = parser.parse_args()
     return args
 
